@@ -9,9 +9,6 @@ import sys
 # ==========================================
 # KONFIGURASI PRIBADI 
 # ==========================================
-TOKEN_TELEGRAM = "8468708708:AAENxzRgZN9_6vAbutadPVFB7jfmP4lfExA"
-CHAT_ID = "1902304881"
-
 TOKEN = os.environ.get("TOKEN_TELEGRAM") or TOKEN_TELEGRAM
 ID_TUJUAN = os.environ.get("CHAT_ID") or CHAT_ID
 
@@ -89,7 +86,8 @@ class CryptoSuperAgent:
             return []
 
     def jalankan_misi(self):
-        waktu_skrg = datetime.datetime.now().strftime('%d-%m-%Y %H:%M')
+        # Tambah 7 jam untuk WIB, atau 8 jam untuk WITA
+        waktu_skrg = (datetime.datetime.now() + datetime.timedelta(hours=7)).strftime('%d-%m-%Y %H:%M')
         print(f"\n🔍 MEMULAI PATROLI PASAR ({waktu_skrg})")
         print("=" * 40)
         
@@ -166,4 +164,5 @@ class CryptoSuperAgent:
 if __name__ == "__main__":
     agent = CryptoSuperAgent()
     agent.jalankan_misi()
+
     print("🏁 Program Selesai.")
